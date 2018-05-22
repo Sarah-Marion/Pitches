@@ -12,10 +12,10 @@ def index():
     View root page function that returns index page
     """
 
-    category = PitchCategory.get_categories()
+    all_category = PitchCategory.get_categories()
 
     title = 'Home- Welcome'
-    return render_template('index.html', title = title, categories=category)
+    return render_template('index.html', title = title, categories=all_category)
 
 
 #Route for adding a new pitch
@@ -78,6 +78,7 @@ def view_pitch(id):
     """
     Function the returns a single pitch for a comment to be added
     """
+    all_category = PitchCategory.get_categories()
     print(id)
     pitches = Pitch.query.get(id)
     # pitches = Pitch.query.filter_by(id=id).all()
@@ -86,7 +87,7 @@ def view_pitch(id):
         abort(404)
     #
     comment = Comments.get_comments(id)
-    return render_template('view-pitch.html', pitches = pitches, comment = comment, category_id = id)
+    return render_template('view-pitch.html', pitches = pitches, comment = comment, category_id = id, categories=all_category)
 
 #adding a comment
 @main.route('/write_comment/<int:id>', methods=['GET', 'POST'])
