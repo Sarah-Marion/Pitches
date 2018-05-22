@@ -76,7 +76,7 @@ def new_category():
 @login_required
 def view_pitch(id):
     """
-    Function the returns a single pitch for comment to be added
+    Function the returns a single pitch for a comment to be added
     """
     print(id)
     pitches = Pitch.query.get(id)
@@ -88,3 +88,25 @@ def view_pitch(id):
     comment = Comments.get_comments(id)
     return render_template('view-pitch.html', pitches = pitches, comment = comment, category_id = id)
 
+#adding a comment
+@main.route('/write_comment/<int:id>', methods=['GET', 'POST'])
+@login_required
+def post_comment(id):
+    """ 
+    Function to post comments 
+    """
+    
+    form = CommentForm()
+    title = 'post comment'
+    pitches = Pitch.query.filter_by(id=id).first()
+
+    if pitches is None:
+         abort(404)
+
+    if form.validate_on_submit():
+        opinion = form.opinion.data
+        new_comment = Comments(opinion = opinion, user_id = current_user.id, pitches_id = pitches.id)
+        new_comment.save_comment()
+        return redirect(url_for('.view_pitch', id = pitches.id))
+
+    return render_template('post_comment.html', comment_form = form, title = title)
