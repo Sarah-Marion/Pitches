@@ -79,7 +79,6 @@ def view_pitch(id):
     Function the returns a single pitch for a comment to be added
     """
     all_category = PitchCategory.get_categories()
-    print(id)
     pitches = Pitch.query.get(id)
     # pitches = Pitch.query.filter_by(id=id).all()
 
@@ -87,7 +86,9 @@ def view_pitch(id):
         abort(404)
     #
     comment = Comments.get_comments(id)
-    return render_template('view-pitch.html', pitches = pitches, comment = comment, category_id = id, categories=all_category)
+    count_likes = Votes.query.filter_by(pitches_id=id, vote=1).all()
+    count_dislikes = Votes.query.filter_by(pitches_id=id, vote=2).all()
+    return render_template('view-pitch.html', pitches = pitches, comment = comment, count_likes=len(count_likes), count_dislikes=len(count_dislikes), category_id = id, categories=all_category)
 
 #adding a comment
 @main.route('/write_comment/<int:id>', methods=['GET', 'POST'])
@@ -114,48 +115,58 @@ def post_comment(id):
 
 
 #Routes upvoting/downvoting pitches
-@main.route('/pitch/upvote/<int:id>')
+@main.route('/pitch/upvote/<int:id>&<int:vote_type>')
 @login_required
-def upvote(id):
+def upvote(id,vote_type):
     """
     View function that adds one to the vote_number column in the votes table
     """
- 
-    pitch_id = Pitch.query.filter_by(id=id).first()
+    # Query for user
+    votes = Votes.query.filter_by(user_id=current_user.id).all()
+    print(f'The new vote is {votes}')
+    to_str=f'{vote_type}:{current_user.id}:{id}'
+    print(f'The current vote is {to_str}')
 
-    if pitch_id is None:
-         abort(404)
+    for vote in votes:
+        if f'{vote}' == to_str:
+            print('YOU CANNOT VOTE MORE THAN ONCE')
 
-    new_vote = Votes(vote=int(1), user_id=current_user.id, pitches_id=pitch_id.id)
-    new_vote.save_vote()
+            break
+        else:   
+            new_vote = Votes(vote=vote_type, user_id=current_user.id, pitches_id=id)
+            new_vote.save_vote()
+            # print(len(count_likes))
+            print('YOU HAVE VOTED')
+    # count_likes = Votes.query.filter_by(pitches_id=id, vote=1).all()
+    # upvotes=len(count_likes)
+    # count_dislikes = Votes.query.filter_by(pitches_id=id, vote=2).all()
+
     return redirect(url_for('.view_pitch', id=id))
 
-
-
-@main.route('/pitch/downvote/<int:id>')
-@login_required
-def downvote(id):
-    """
-    View function that add one to the vote_number column in the votes table
-    """
+# @main.route('/pitch/downvote/<int:id>')
+# @login_required
+# def downvote(id):
+#     """
+#     View function that add one to the vote_number column in the votes table
+#     """
     
-    pitch_id = Pitch.query.filter_by(id=id).first()
+#     pitch_id = Pitch.query.filter_by(id=id).first()
 
-    if pitch_id is None:
-         abort(404)
+#     if pitch_id is None:
+#          abort(404)
 
-    new_vote = Votes(vote=int(2), user_id=current_user.id, pitches_id=pitch_id.id)
-    new_vote.save_vote()
-    return redirect(url_for('.view_pitch', id=id))
+#     # new_vote = Votes(vote+=int(2), user_id=current_user.id, pitches_id=pitch_id.id)
+#     new_vote.save_vote()
+#     return redirect(url_for('.view_pitch', id=id))
 
-@main.route('/pitch/downvote/<int:id>')
-def vote_count(id):
-    """
-    View function to return the total vote count per pitch
-    """
+# @main.route('/pitch/downvote/<int:id>')
+# def vote_count(id):
+#     """
+#     View function to return the total vote count per pitch
+#     """
     
-    votes = Votes.query.filter_by(user_id=user_id, line_id=line_id).all()
+#     votes = Votes.query.filter_by(user_id=user_id, line_id=line_id).all()
 
-    total_votes = votes.count()
+#     total_votes = votes.count()
 
-    return total_votes
+#     return total_votes

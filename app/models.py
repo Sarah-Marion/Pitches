@@ -160,3 +160,6 @@ class Votes(db.Model):
     def get_votes(cls,user_id,pitches_id):
         votes = Votes.query.filter_by(user_id=user_id, pitches_id=pitches_id).all()
         return votes
+
+    def __repr__(self):
+        return f'{self.vote}:{self.user_id}:{self.pitches_id}'
