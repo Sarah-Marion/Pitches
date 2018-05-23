@@ -74,7 +74,6 @@ class PitchCategory(db.Model):
         categories = PitchCategory.query.all()
         return categories
 
-
 #pitches class
 class Pitch(db.Model):
     """
