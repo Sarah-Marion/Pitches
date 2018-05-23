@@ -74,7 +74,7 @@ SQLAlchemy==1.2.7
 # system-service==0.3
 systemd-python==234
 termcolor==1.1.0
-ubuntu-drivers-common==0.0.0
+# ubuntu-drivers-common==0.0.0
 ufw==0.35
 unattended-upgrades==0.1
 urllib3==1.22
