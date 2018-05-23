@@ -25,9 +25,9 @@ As a user I would like:
 ## How to use it
 
 > * Internet connection
-> * Click https://display-news-highlights.herokuapp.com/) <br/>
+> * Click https://pitchthis.herokuapp.com/) <br/>
   or <br/>
-> * Copy https://display-news-highlights.herokuapp.com/) and  Paste the link on your prefered browser
+> * Copy https://pitchthis.herokuapp.com/) and  Paste the link on your prefered browser
 
 # How it works
 
@@ -43,8 +43,8 @@ As a user I would like:
 
 ## Setup/Installation Requirements
 
-* git clone https://github.com/sarah-marion/60sec_Pitch.git
-* cd 60sec_Pitch
+* git clone https://github.com/sarah-marion/Pitches.git
+* cd Pitches
 * python3.6 -m venv virtual (install virtual environment)
 * source virtual/bin/activate
 * python3.6 -m pip install -r requirements.txt (install all dependencies)
@@ -57,13 +57,11 @@ As a user I would like:
 > * pip install flask
 > * pip install flask-bootstrap
 > * pip install flask-script
-
-## Technical Requirements
-
-<!-- * Contains two classes:- News Source and News Articless
-* Contains docstrings to document methods and functions
-* Contains test classes for all the classes testing each individual method in a class -->
-
+> * pip install flask-wtf
+> * pip install flask-migrate
+> * pip install flask-login
+> * pip install Flask-Mail
+> * pip install flask-uploads
 
 ## Known Bugs
 
