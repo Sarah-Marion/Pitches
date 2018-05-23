@@ -127,16 +127,21 @@ def upvote(id,vote_type):
     to_str=f'{vote_type}:{current_user.id}:{id}'
     print(f'The current vote is {to_str}')
 
+    if not votes:
+        new_vote = Votes(vote=vote_type, user_id=current_user.id, pitches_id=id)
+        new_vote.save_vote()
+        # print(len(count_likes))
+        print('YOU HAVE new VOTED')
+
     for vote in votes:
         if f'{vote}' == to_str:
             print('YOU CANNOT VOTE MORE THAN ONCE')
-
             break
         else:   
             new_vote = Votes(vote=vote_type, user_id=current_user.id, pitches_id=id)
             new_vote.save_vote()
-            # print(len(count_likes))
             print('YOU HAVE VOTED')
+            break
     # count_likes = Votes.query.filter_by(pitches_id=id, vote=1).all()
     # upvotes=len(count_likes)
     # count_dislikes = Votes.query.filter_by(pitches_id=id, vote=2).all()
