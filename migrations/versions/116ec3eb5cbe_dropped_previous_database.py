@@ -1,8 +1,8 @@
-"""switched to postgres
+"""Dropped previous database
 
-Revision ID: 9738b4a0e3f0
-Revises: 2cf1fdbf9e91
-Create Date: 2018-05-23 18:43:59.156017
+Revision ID: 116ec3eb5cbe
+Revises: 
+Create Date: 2018-05-24 13:49:59.334830
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9738b4a0e3f0'
-down_revision = '2cf1fdbf9e91'
+revision = '116ec3eb5cbe'
+down_revision = None
 branch_labels = None
 depends_on = None
 

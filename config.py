@@ -6,8 +6,8 @@ class Config:
     """
     #pass
     SECRET_KEY = os.environ.get("SECRET_KEY")
-    DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    # DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
@@ -28,6 +28,7 @@ class ProdConfig(Config):
     """
     # pass
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    
 
 class DevConfig(Config):
     """
@@ -37,7 +38,8 @@ class DevConfig(Config):
         Config: The parent configuration class with General
         configuration settings
     """
-
+    DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     DEBUG = True
 
 class TestConfig(Config):
