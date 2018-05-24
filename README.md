@@ -31,8 +31,9 @@ As a user I would like:
 
 ## How it works
 
-* A user needs to sign up
-* A user the needs to sign in to vote and post pitches
+> * A user needs to sign up
+> * A user needs to sign in to vote and post pitches
+> * A user can also create categories and post pitches within the application
 
 ## Technologies Used
 
@@ -43,13 +44,24 @@ As a user I would like:
 
 ## Setup/Installation Requirements
 
-* git clone https://github.com/sarah-marion/Pitches.git
-* cd Pitches
-* python3.6 -m venv virtual (install virtual environment)
-* source virtual/bin/activate
-* python3.6 -m pip install -r requirements.txt (install all dependencies)
-* Inside the manage.py module change the config_name parameter from 'production' to 'development' ie app = create_app('production') should be app = create_app('development')
-* ./start.sh
+### Prerequisites
+
+* ```git clone https://github.com/sarah-marion/Pitches.git```
+* ```cd Pitches```
+
+#### To install a virtual environment
+
+* ```python3.6 -m venv virtual``` 
+* ```source virtual/bin/activate```
+
+#### To install all dependencies
+
+* ```python3.6 -m pip install -r requirements.txt```
+
+#### To change the config_name parameter from 'production' to 'development'
+
+* Inside the manage.py module  ie:- ```app = create_app('production')``` should be ```app = create_app('development')```
+* Then run ```python3.6 manage.py server``` to get the app running  navigate to ```http://127.0.0.1:5000/``` and it will open in your browser/
 
 ## Dependancy Installments
 
@@ -62,6 +74,10 @@ As a user I would like:
 > * pip install flask-login
 > * pip install Flask-Mail
 > * pip install flask-uploads
+
+## Specifications
+
+> * To see the projects specifications refer to the [SPECS.md](SPECS.md) file for more details.
 
 ## Known Bugs
 
