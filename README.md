@@ -46,22 +46,23 @@ As a user I would like:
 
 ### Prerequisites
 
-* ```git clone https://github.com/sarah-marion/Pitches.git```
-* ```cd Pitches```
+> * Internet access
+> * ```git clone https://github.com/sarah-marion/Pitches.git```
+> * ```cd Pitches```
 
 #### To install a virtual environment
 
-* ```python3.6 -m venv virtual``` 
-* ```source virtual/bin/activate```
+> * ```python3.6 -m venv virtual``` 
+> * ```source virtual/bin/activate```
 
 #### To install all dependencies
 
-* ```python3.6 -m pip install -r requirements.txt```
+> * ```python3.6 -m pip install -r requirements.txt```
 
 #### To change the config_name parameter from 'production' to 'development'
 
-* Inside the manage.py module  ie:- ```app = create_app('production')``` should be ```app = create_app('development')```
-* Then run ```python3.6 manage.py server``` to get the app running  navigate to ```http://127.0.0.1:5000/``` and it will open in your browser/
+> * Inside the manage.py module  i.e:- ```app = create_app('production')``` should be ```app = create_app('development')```
+> * Then run ```python3.6 manage.py server``` to get the app running  navigate to ```http://127.0.0.1:5000/``` and it will open in your browser
 
 ## Dependancy Installments
 

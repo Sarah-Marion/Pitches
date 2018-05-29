@@ -1,12 +1,23 @@
 {% macro displayCategoryList(category_list) %} 
-{% for category in category_list%}
-<div class="col-md-2">
-    <a href="{{url_for('.category',id=category.id)}}">
-        <p> {{category.name|upper}} </p>
-    </a>
-</div>
+    {% for category in category_list %}
+    
+        <li><a href="{{url_for('.category',id=category.id)}}">
+            {{category.name|upper}}
+        </a>
+        </li>
+    {% endfor %} 
+{% endmacro %}
 
-{% endfor %} 
+{% macro displayAllPitches(pitches) %}
+    {% for pitch in pitches %}
+        <div class="row my-pitches">
+            <div class="col-md-12">
+                <h4>{{pitch.user.username}}</h4>
+                <p>{{pitch.content}}</p>
+                <p><a class="btn btn-info" href="{{url_for('.post_comment',id=pitch.id)}}"> Add your comment</a></p>
+            </div>
+        </div>
+    {% endfor %}
 {% endmacro %}
 
 {% macro displayPitches(pitch_list) %} 

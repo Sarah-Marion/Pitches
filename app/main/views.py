@@ -13,9 +13,11 @@ def index():
     """
 
     all_category = PitchCategory.get_categories()
+    all_pitches = Pitch.query.order_by('-id').all()
+    print(all_pitches)
 
     title = 'Home- Welcome'
-    return render_template('index.html', title = title, categories=all_category)
+    return render_template('index.html', title = title, categories=all_category, all_pitches=all_pitches)
 
 
 #Route for adding a new pitch
