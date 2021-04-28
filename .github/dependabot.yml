@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "02:00"
+    timezone: Africa/Nairobi
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: flask-migrate
+    versions:
+    - 2.6.0
+  - dependency-name: lazy-object-proxy
+    versions:
+    - 1.5.2
+  - dependency-name: cffi
+    versions:
+    - 1.14.4
+  - dependency-name: httplib2
+    versions:
+    - 0.18.0
+  - dependency-name: jinja2
+    versions:
+    - 2.10.1
+  - dependency-name: pyyaml
+    versions:
+    - "5.1"
