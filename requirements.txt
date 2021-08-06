@@ -44,7 +44,7 @@ markdown2==2.4.0
 MarkupSafe==1.0
 mccabe==0.6.1
 oauth==1.0.1
-olefile==0.44
+olefile==0.46
 passlib==1.7.1
 pexpect==4.2.1
 Pillow==8.1.1
