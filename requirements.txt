@@ -34,7 +34,7 @@ Jinja2==2.11.3
 keyring==10.4.0
 keyrings.alt==2.2
 # language-selector==0.1
-launchpadlib==1.10.5
+launchpadlib==1.10.13
 lazr.restfulclient==0.13.5
 lazr.uri==1.0.3
 lazy-object-proxy==1.6.0
